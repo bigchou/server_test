@@ -141,7 +141,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    NSLog(@"UIImagePickerControllerEditedImage = %@",info[UIImagePickerControllerEditedImage]);
+    NSLog(@"Image Information:\n%@",info[UIImagePickerControllerEditedImage]);
     self.myImage.image = chosenImage;
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
@@ -168,7 +168,8 @@
 - (IBAction) sendimage:(UIButton *)sender
 {
     // declare something there
-    NSData *imageData = UIImageJPEGRepresentation(_myImage.image, 90);
+    NSData *imageData = UIImageJPEGRepresentation(_myImage.image, 0.1);
+    NSLog(@"Size of Image(bytes):%d",[imageData length]);
     NSString *urlString = @"http://www.csie.ntnu.edu.tw/~40347905s/uploads.php";
     NSString *imageName = @"test";
     

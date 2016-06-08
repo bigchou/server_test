@@ -37,7 +37,7 @@
 */
 
 - (IBAction)getimgbutton:(UIButton *)sender {
-    // press the button and get image from url 
+    // press the button and get image from url
     NSString *imageName = @"test.jpg";
     NSString *urlString = [NSString stringWithFormat: @"http://www.csie.ntnu.edu.tw/~40347905s/uploads/%@", imageName];
     
@@ -51,6 +51,7 @@
     // run on a background thread
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+        NSLog(@"Size of Image(bytes):%d",[imageData length]);
         
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
